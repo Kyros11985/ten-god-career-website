@@ -141,10 +141,12 @@
     <div class="tip" style="margin-top:16px;">Note: Bazi indicates tendencies and fit, not destiny. Combine it with your skills, interests and real-world opportunities. For entertainment and self-reflection purposes.</div>
   </section>
 
-  <footer>
-    <p class="disclaimer">Bazi / Four Pillars is a traditional Chinese metaphysical system. This tool is for self-exploration and entertainment; it does not constitute professional career, financial, legal or medical advice. Your input never leaves this browser.</p>
-    <p>© <span id="yr"></span> Ten-God Career Compass · Built with the Bazi engine (English version)</p>
-  </footer>
+ <footer class="footer">
+  <p>© <span id="year"></span> Bazi Shifu · Ten-God Career Diagnosis</p>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </div>
 
 <script src="js/bazi.js"></script>
