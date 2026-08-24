@@ -35,7 +35,7 @@
   }
   ySel.addEventListener('change',refreshDays); mSel.addEventListener('change',refreshDays); dSel.addEventListener('change',updateDateLabel);
   // init
-  ySel.value=1998; mSel.value=7; refreshDays(); dSel.value=21; updateDateLabel();
+  ySel.value=2001; mSel.value=7; refreshDays(); dSel.value=07; updateDateLabel();
 
   // ---------- Diagnose ----------
   const btn = document.getElementById('btnDiagnose');
