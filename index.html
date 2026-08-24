@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ten-God Career Diagnosis · Bazi Career Compass</title>
+<meta name="description" content="Discover career directions that fit your natural energy through Ten-God (Shi Shen) Bazi analysis. Free, private, all in English.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container" id="app">
+  <header class="hero">
+    <span class="badge">Bazi · Ten Gods · Career Compass</span>
+    <h1>Turn Your Birth Chart Into a Career Roadmap</h1>
+    <p>Enter your birth date and get a structured Ten-God career diagnosis: your core working style, best-fit industries, side-business directions, and the optimal months in 2026 to act.</p>
+    <nav>
+      <a href="#diagnose">Diagnose</a>
+      <a href="#records">My Records</a>
+      <a href="#about">How it works</a>
+    </nav>
+  </header>
+
+  <!-- DIAGNOSE -->
+  <section id="diagnose" class="card">
+    <h2>Start Your Career Diagnosis</h2>
+    <p class="sub">All processing happens in your browser. Records are saved only on this device.</p>
+    <div class="grid grid-2">
+      <div>
+        <label for="nickname">Nickname (optional)</label>
+        <input id="nickname" type="text" placeholder="e.g. Alex">
+      </div>
+      <div>
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="other">Other / prefer not to say</option>
+        </select>
+      </div>
+    </div>
+    <div style="height:14px"></div>
+    <div class="grid grid-2">
+      <div>
+        <label>Birth date</label>
+        <div class="row-date">
+          <select id="y"></select>
+          <select id="m"></select>
+          <select id="d"></select>
+        </div>
+        <div class="tip" id="dateShown" style="margin-top:8px;">Please select year, month and day.</div>
+      </div>
+      <div>
+        <label for="hour">Birth hour (2-hour period / Chinese shichen)</label>
+        <select id="hour">
+          <option value="-1">Unknown</option>
+          <option value="0">Zi · 23:00–00:59</option>
+          <option value="1">Chou · 01:00–02:59</option>
+          <option value="2">Yin · 03:00–04:59</option>
+          <option value="3">Mao · 05:00–06:59</option>
+          <option value="4">Chen · 07:00–08:59</option>
+          <option value="5">Si · 09:00–10:59</option>
+          <option value="6">Wu · 11:00–12:59</option>
+          <option value="7">Wei · 13:00–14:59</option>
+          <option value="8">Shen · 15:00–16:59</option>
+          <option value="9">You · 17:00–18:59</option>
+          <option value="10">Xu · 19:00–20:59</option>
+          <option value="11">Hai · 21:00–22:59</option>
+        </select>
+        <label for="city" style="margin-top:14px;">Birth city (optional)</label>
+        <input id="city" type="text" placeholder="e.g. Hangzhou, China">
+      </div>
+    </div>
+    <div style="height:18px"></div>
+    <button class="btn" id="btnDiagnose" disabled>Run Career Diagnosis →</button>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="hidden">
+    <div class="card">
+      <div class="section-title"><div class="ico">📊</div><div><h2 style="margin:0">Your Diagnosis Report</h2><div class="sub" style="margin:2px 0 0" id="reportMeta"></div></div></div>
+      <div class="grid grid-4" id="kpiRow"></div>
+      <div style="height:18px"></div>
+      <div class="pillars" id="pillarsBox"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><div class="ico">⚖️</div><h2 style="margin:0">Element Balance</h2></div>
+      <div id="elementBox"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><div class="ico">🎯</div><h2 style="margin:0">Career Direction</h2></div>
+      <p class="sub">Top Three Career Energies (Ten-God profile) and best-fit industries based on your favorable elements.</p>
+      <div class="grid grid-3" id="careerBox"></div>
+      <div style="height:16px"></div>
+      <div class="grid grid-2">
+        <div class="career-card"><h4>Industries to explore</h4><p id="industryText" style="white-space:pre-line"></p></div>
+        <div class="career-card"><h4>Industries to approach carefully</h4><p id="avoidText" style="white-space:pre-line"></p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><div class="ico">💰</div><h2 style="margin:0">Side-Business Directions</h2></div>
+      <p class="sub">Light-asset, skill-based directions aligned with your chart. Build a sustainable second income stream, not a gamble.</p>
+      <div class="grid grid-3" id="sideBox"></div>
+      <div class="tip"><b>Side-business rule of thumb:</b> pick the direction that matches both your chart and a skill you can actually ship this month. Start small, compound over time.</div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><div class="ico">📅</div><h2 style="margin:0">2026 (Bing-Wu) Action Timeline</h2></div>
+      <p class="sub">A month-by-month map for launching, growing, holding and closing side-business moves in 2026.</p>
+      <div class="timeline" id="timelineBox"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title"><div class="ico">🔒</div><h2 style="margin:0">Your Privacy</h2></div>
+      <p class="sub">This report is computed in your browser. Diagnoses are stored only in this browser on this device, filtered by a local device id, and never uploaded to any server.</p>
+      <div class="flex-gap" style="margin-top:6px;">
+        <button class="btn btn-ghost" id="btnSave" style="width:auto;">Save to My Records</button>
+        <button class="btn btn-ghost" id="btnNew" style="width:auto;">Run Another Diagnosis</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECORDS -->
+  <section id="records" class="card hidden">
+    <div class="section-title"><div class="ico">🕒</div><div><h2 style="margin:0">My Diagnosis Records</h2><div class="sub" style="margin:2px 0 0">Only records saved on this device are shown.</div></div></div>
+    <div class="tip lock">🔒 Records are bound to this device. They are visible only to you and are never synced across devices or accounts.</div>
+    <div style="height:12px"></div>
+    <div class="history-list" id="historyList"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="card">
+    <h2>How Ten-God Career Diagnosis Works</h2>
+    <p class="sub">A structured translation of your Bazi energy into modern career language — a map, not a verdict.</p>
+    <div class="grid grid-3">
+      <div class="career-card"><h4>1. Build the Four Pillars</h4><p>From your birth date we derive the Year, Month, Day and (if known) Hour pillars — the foundation of Bazi.</p></div>
+      <div class="career-card"><h4>2. Read the Ten Gods</h4><p>Each pillar is interpreted as a "Ten God" relative to your Day Master, revealing how you work, create, lead and earn.</p></div>
+      <div class="career-card"><h4>3. Match to Careers</h4><p>We cross your energy profile with favorable elements to suggest industries, side-business tracks and timing.</p></div>
+    </div>
+    <div class="tip" style="margin-top:16px;">Note: Bazi indicates tendencies and fit, not destiny. Combine it with your skills, interests and real-world opportunities. For entertainment and self-reflection purposes.</div>
+  </section>
+
+  <footer>
+    <p class="disclaimer">Bazi / Four Pillars is a traditional Chinese metaphysical system. This tool is for self-exploration and entertainment; it does not constitute professional career, financial, legal or medical advice. Your input never leaves this browser.</p>
+    <p>© <span id="yr"></span> Ten-God Career Compass · Built with the Bazi engine (English version)</p>
+  </footer>
+</div>
+
+<script src="js/bazi.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
